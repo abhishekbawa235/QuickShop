@@ -1,18 +1,26 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
-import { createStaticNavigation } from '@react-navigation/native';
+import { createStaticNavigation, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import myTabs from './bottomNavigation'
 
+const Stack = createNativeStackNavigator();
 
-const RootStack = createNativeStackNavigator({
-  screens: {
-    myTabs: myTabs,
-  },
-});
+function RootStack() {
+  return (
+    <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Screen name="myTabs" component={myTabs} />
+    </Stack.Navigator>
+  );
+}
 
-const Navigation = createStaticNavigation(RootStack);
+
+
 
 export default function MainNavigation() {
-  return <Navigation />;
+  return (
+    <NavigationContainer>
+      <RootStack/>
+    </NavigationContainer>
+  )
 }
