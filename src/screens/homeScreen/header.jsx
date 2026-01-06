@@ -1,11 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import { useTranslation } from 'react-i18next';
 const Header = () => {
+    const {t} = useTranslation()
+
   return (
     <View style={styles.box}>
-      <Text style={styles.text}>QuickShop</Text>
+      <Text style={styles.text}>{t('QuickShop')}</Text>
 <MaterialIcons name="shopping-cart" size={24} color="#000" />
     </View>
   )
