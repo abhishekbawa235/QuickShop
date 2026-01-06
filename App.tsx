@@ -10,20 +10,26 @@ import React from 'react';
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import {
   SafeAreaProvider,
+  SafeAreaView,
   useSafeAreaInsets,
 } from 'react-native-safe-area-context';
 import MainNavigation from './src/navigations/mainNavigation'
 import { Provider } from 'react-redux';
 import {store} from './src/store/store'
+import {GestureHandlerRootView} from 'react-native-gesture-handler'
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
-    <Provider store={store}>
+    <GestureHandlerRootView style={{flex:1}}>
+ <Provider store={store}>
    <SafeAreaProvider>
+    <SafeAreaView/>
    <MainNavigation/>
     </SafeAreaProvider>
     </Provider>
+    </GestureHandlerRootView>
+   
  
   );
 }
